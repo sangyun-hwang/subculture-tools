@@ -25,13 +25,13 @@ export function ExpTool({ config }: { config: ExpConfig }) {
   })
 
   return (
-    <div style={{ padding: 20 }}>
-      <div className="flex gap-2 items-center mb-4">
+    <div className="min-w-80 max-w-xl mx-auto p-6 space-y-6">
+      <div className="flex gap-5 items-center justify-between">
         <select
           name="dungeon"
           value={dungeonKey}
           onChange={(e) => setDungeon(e.target.value)}
-          className="border px-2 py-1 rounded"
+          className="border rounded px-4 py-1"
         >
           {Object.entries(config.dungeons).map(([key, dungeon]) => (
             <option key={key} value={key}>
@@ -50,20 +50,37 @@ export function ExpTool({ config }: { config: ExpConfig }) {
           스킵
         </label>
       </div>
-      <div className="flex gap-2 mb-4">
+
+      <div className="bg-white shadow rounded-2xl p-6 space-y-3">
+        <div className="text-gray-500 text-sm">총 경험치</div>
+        <div className="text-2xl font-bold">{summary.totalExp}</div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-4 mt-4">
+        <div className="text-center">
+          <div className="text-gray-400 text-xs">60랩 캐릭</div>
+          <div className="text-lg font-semibold">{summary.characters}명</div>
+        </div>
+        <div className="text-center">
+          <div className="text-gray-400 text-xs">다음까지</div>
+          <div className="text-lg font-semibold">{summary.runsForNext}판</div>
+        </div>
+      </div>
+
+      <div className="flex gap-2">
         <button
-          className="bg-blue-500 text-white px-4 py-2 rounded"
-          onClick={() => addDungeonRun(dungeon, 1)}>+1회</button>
+          className="flex-1 bg-blue-500 text-white py-2 rounded-lg"
+          onClick={() => addDungeonRun(dungeon, 1)}>+1</button>
         <button
-          className="bg-red-500 text-white px-4 py-2 rounded"
-          onClick={() => addDungeonRun(dungeon, -1)}>-1회</button>
+          className="flex-1 bg-gray-200 py-2 rounded-lg"
+          onClick={() => addDungeonRun(dungeon, -1)}>-1</button>
       </div>
 
 
-      <div>총 경험치: {summary.totalExp}</div>
-      <div className="space-y-1">
+
+      <div className="bg-white shadow rounded-2xl p-4 space-y-2">
         {Object.entries(tickets).map(([type, value]) => (
-          <div key={type} className="flex gap-2 items-center">
+          <div key={type} className="flex gap-2 items-center justify-between">
             <span className="w-12">{config.ticketsName[type as keyof typeof config.ticketsName]}</span>
             <input
               type="number"
@@ -76,7 +93,7 @@ export function ExpTool({ config }: { config: ExpConfig }) {
           </div>
         ))}
       </div>
-      <div>60랩 캐릭: {summary.characters}명</div>
+
     </div >
   )
 }
