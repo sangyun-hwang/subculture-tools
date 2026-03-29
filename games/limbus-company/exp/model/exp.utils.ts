@@ -1,4 +1,4 @@
-import { Tickets, TicketValues, Dungeon, TicketType } from './exp.types'
+import { Tickets, TicketValues, Dungeon, TicketType, EffectiveDungeon } from './exp.types'
 
 export function calculateTotalExp(
   tickets: Tickets,
@@ -25,7 +25,7 @@ export function calculateRemainExp(
 }
 
 export function calculateExpPerRun(
-  dungeon: Dungeon,
+  dungeon: EffectiveDungeon,
   ticketValues: TicketValues
 ) {
   return Object.entries(dungeon.reward).reduce((acc, [type, count]) => {
@@ -36,7 +36,7 @@ export function calculateExpPerRun(
 
 export function calculateRunsForNextCharacter(
   remainExp: number,
-  dungeon: Dungeon,
+  dungeon: EffectiveDungeon,
   ticketValues: TicketValues,
   expPerCharacter: number
 ) {
@@ -49,7 +49,7 @@ export function calculateRunsForNextCharacter(
 
 export function applyDungeonReward(
   tickets: Tickets,
-  dungeon: Dungeon,
+  dungeon: EffectiveDungeon,
   count: number = 1
 ): Tickets {
   const newTickets = { ...tickets }
@@ -70,7 +70,7 @@ export function calculateExpSummary({
 }: {
   tickets: Tickets
   ticketValues: TicketValues
-  dungeon: Dungeon
+  dungeon: EffectiveDungeon
   expPerCharacter: number
 }) {
   const totalExp = calculateTotalExp(tickets, ticketValues)
