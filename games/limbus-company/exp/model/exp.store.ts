@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
-import { Tickets } from './exp.types'
+import { Dungeon, Tickets } from './exp.types'
 import { applyDungeonReward } from './exp.utils'
 
 interface ExpState {
   tickets: Tickets
-  addDungeonRun: (dungeon, count?: number) => void
+  addDungeonRun: (dungeon: Dungeon, count?: number) => void
   setTicket: (type: keyof Tickets, value: number) => void
   reset: () => void
 }

@@ -3,7 +3,7 @@
 import { useExpStore } from '../model/exp.store'
 import { calculateExpSummary } from '../model/exp.utils'
 
-export function ExpTool({ config }) {
+export function ExpTool({ config }: { config: any }) {
   const { tickets, addDungeonRun, setTicket } = useExpStore()
 
   const dungeon = config.dungeons.d9
