@@ -14,7 +14,7 @@ export function calculateCharacters(
   totalExp: number,
   expPerCharacter: number
 ) {
-  return Math.round(totalExp / expPerCharacter * 10) / 10
+  return Math.floor(totalExp / expPerCharacter * 100) / 100
 }
 
 export function calculateRemainExp(
