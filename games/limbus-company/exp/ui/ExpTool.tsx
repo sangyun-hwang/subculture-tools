@@ -12,7 +12,7 @@ function getEffectiveDungeon(dungeon: Dungeon, isSkip: boolean): EffectiveDungeo
 }
 
 export function ExpTool({ config }: { config: ExpConfig }) {
-  const { tickets, addDungeonRun, setTicket, dungeonKey, setDungeon, isSkip, setSkip } = useExpStore()
+  const { tickets, addDungeonRun, setTicket, dungeonKey, setDungeon, isSkip, setSkip, reset } = useExpStore()
 
   const baseDungeon = config.dungeons[dungeonKey]
   const dungeon = getEffectiveDungeon(baseDungeon, isSkip)
@@ -81,7 +81,7 @@ export function ExpTool({ config }: { config: ExpConfig }) {
       <div className="bg-white shadow rounded-2xl p-4 space-y-2">
         {Object.entries(tickets).map(([type, value]) => (
           <div key={type} className="flex gap-2 items-center justify-between">
-            <span className="w-12">{config.ticketsName[type as keyof typeof config.ticketsName]}</span>
+            <span className="w-16">{config.ticketsName[type as keyof typeof config.ticketsName]}</span>
             <input
               type="number"
               value={value}
@@ -92,6 +92,12 @@ export function ExpTool({ config }: { config: ExpConfig }) {
             />
           </div>
         ))}
+      </div>
+
+      <div className="flex gap-2">
+        <button
+          className="flex-1 bg-gray-200 py-2 rounded-lg"
+          onClick={() => reset()}>리셋</button>
       </div>
 
     </div >

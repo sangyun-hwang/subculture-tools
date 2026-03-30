@@ -13,10 +13,10 @@ export const limbusCompany: GameConfig = {
     },
 
     ticketsName: {
-      t1: '티켓 1',
-      t2: '티켓 2',
-      t3: '티켓 3',
-      t4: '티켓 4',
+      t1: "티켓 I",
+      t2: "티켓 II",
+      t3: "티켓 III",
+      t4: "티켓 IV",
     },
 
     dungeons: {
